@@ -27,17 +27,17 @@ if [ $# -ge 3 ]  && [ $1 = alias ] ; then
     cmd=$2
     # make 'more' the new $1
     shift 2
-    # get rid of previous aliases for 'pager'
+    # remove previous aliases for 'pager'
     cat .aka | grep -v "alias $cmd=" > .aka
     # get rid of previous aliases
     echo "alias $cmd='$*'" >> .aka
     exit 0
 fi
 
-# Not an alias creation, let's load up aliases...
+# Load up aliases...
 if [ -e .aka ] ; then
     . ./.aka
 fi
 
-# Now execute command
+# ...and execute command
 eval $*
