@@ -8,7 +8,8 @@ Usage: aka alias               show stored aliases
 
 By default, aliases are stored in the `.aka` file of the current working
 directory. Optionally, the location of that file can be modified by setting the
-AKA_FILE enviornment variable.
+AKA_FILE enviornment variable. Tested on Debian, OpenBSD, and OpenWRT, aka uses
+portable shell syntax and should work everywhere that has typical /bin/sh
 
 
 Examples:
@@ -55,17 +56,21 @@ Everything that is not aliased will get executed as a regular command.
 
 ## How it works
 
-aka gets executed via /bin/sh, sources AKA_FILE and evals the positional
-parameters, thus applying aliases and whatever other shell script shenanigans
-stored in AKA_FILE.
+aka is a tiny portable shell script that gets executed via /bin/sh, sources
+AKA_FILE and evals the positional parameters, thus applying aliases and
+whatever other shell script shenanigans stored in AKA_FILE.
 
 For example, this means that you can put something like
 
-    alias my='AKA_FILE=~/.my_rc aka'
+    alias my='AKA_FILE=~/.my_aliases aka'
 
 in your shell's startup files, and thereafter use the `my` command as an `aka`
 invocation that always sources ~/.my_aliases file in your home directory,
 regardless of where you run it.
+
+## Installation
+
+Grab aka, make it executable, and place it somewhere in your path.
 
 ## Notes
 
