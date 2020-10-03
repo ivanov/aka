@@ -55,12 +55,13 @@ Everything that is not aliased will get executed as a regular command.
 
 ## How it works
 
-aka gets executed via /bin/sh, sources $AKA_FILE and evals the command, thus
-applying aliases and whatever other parameters were stored in $AKA_FILE.
+aka gets executed via /bin/sh, sources AKA_FILE and evals the positional
+parameters, thus applying aliases and whatever other shell script shenanigans
+stored in AKA_FILE.
 
-This means that you can, for example put something like
+For example, this means that you can put something like
 
-    alias my='AKA_FILE=~/.my_aliases aka'
+    alias my='AKA_FILE=~/.my_rc aka'
 
 in your shell's startup files, and thereafter use the `my` command as an `aka`
 invocation that always sources ~/.my_aliases file in your home directory,
@@ -75,7 +76,8 @@ establishing their behavior based on the `argv[0]` name they were called by
 
 ## Ideas
 
-[ ] AKA_FILE environment variable set to the directory containing the desired
-    .aka file, otherwise we look for that file in the current directory.
+[x] AKA_FILE environment variable set to the file containing the desired
+    shellscript file to source. Otherwise we look for the `.aka` file in the
+    current directory.
 
 [ ] `aka unalias` command?

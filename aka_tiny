@@ -1,12 +1,11 @@
 #!/bin/sh
+aliasFile=${AKA_FILE:-./.aka}
 if [ $# -ge 3 ]  && [ $1 = alias ] ; then
     cmd=$2
     shift 2
-    cat .aka | grep -v "alias $cmd=" > .aka
-    echo "alias $cmd='$*'" >> .aka
+    [ -e "$aliasFile" ] && grep -v "alias $cmd=" "$aliasFile"  > "$aliasFile"~
+    echo "alias $cmd='$*'" >> "$aliasFile"~ && mv "$aliasFile"~ "$aliasFile"
     exit 0
 fi
-if [ -e .aka ] ; then
-    . ./.aka
-fi
+[ -e "$aliasFile" ] && . "$aliasFile"
 eval $*

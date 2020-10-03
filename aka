@@ -14,6 +14,7 @@ echo "       aka NAME [...]          run CMD, optionally with more arguments"
     esac
 fi
 
+aliasFile=${AKA_FILE:-./.aka}
 # Is this an alias creation? If so, we should have at least 3 arguments,
 # such as:
 #
@@ -28,15 +29,13 @@ if [ $# -ge 3 ]  && [ $1 = alias ] ; then
     # make 'more' the new $1
     shift 2
     # remove previous aliases for 'pager'
-    [ -e .aka ] && grep -v "alias $cmd=" .aka  > .aka~
-    echo "alias $cmd='$*'" >> .aka~ && mv .aka~ .aka
+    [ -e "$aliasFile" ] && grep -v "alias $cmd=" "$aliasFile"  > "$aliasFile"~
+    echo "alias $cmd='$*'" >> "$aliasFile"~ && mv "$aliasFile"~ "$aliasFile"
     exit 0
 fi
 
 # Load up aliases...
-if [ -e .aka ] ; then
-    . ./.aka
-fi
+[ -e "$aliasFile" ] && . "$aliasFile"
 
 # ...and execute command
 eval $*
