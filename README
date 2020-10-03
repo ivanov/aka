@@ -1,7 +1,12 @@
 # Also Known As
 
-A simple "launcher" of command-subcommand style where the the subcommands can
-be altered based on configuration.
+Simple, shell-based command aliasing
+
+Usage: aka alias               show stored aliases
+       aka alias NAME CMD...   store an alias for CMD
+       aka NAME [...]          run CMD, optionally with more arguments
+
+Examples:
 
     $ aka alias pager more
 
@@ -13,6 +18,8 @@ be altered based on configuration.
     $ aka pager --version
     git version 2.28.0
 
+Everything that is not aliased will get executed as usual.
+
 ## Notes
 
 Initial prototype uses aliases, which may not work for programs that depend on
@@ -23,7 +30,7 @@ We use an .aka file in the current directory for storing the aliases.
 
 ## Ideas
 
-[ ] AKA_HOME environment variable to look for .aka (so we don't always look for
-    .aka in either PWD or HOME)
+[ ] AKA_HOME environment variable set to the directory containing the desired
+    .aka file, otherwise we look for that file in the current directory.
 
 [ ] `aka unalias` command
