@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# is this a alias creation? that means we should have at least 3 arguments,
+# Is this an alias creation? If so, we should have at least 3 arguments,
 # such as:
 #
 # $ aka alias pager more
@@ -21,9 +21,11 @@ if [ $# -ge 3 ]  && [ $1 = alias ] ; then
 fi
 
 if [ -e .aka ] ; then
-    echo sourcing .aka;
+    # TODO - wrap this in if-VERBOSE
+    #echo sourcing .aka;
     . ./.aka
 fi
 
-# TODO - wrap this in if VERBOSE
-echo `type $1`
+# TODO - wrap this in if-VERBOSE
+#echo `type $1`
+eval $*

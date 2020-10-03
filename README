@@ -1,22 +1,29 @@
 # Also Known As
 
-A simply "launcher" of command-subcommand style where the the subcommands can
-be altered based on configuration
+A simple "launcher" of command-subcommand style where the the subcommands can
+be altered based on configuration.
 
     $ aka alias pager more
+
     $ aka pager --version
     more from util-linux 2.36
-    $ aka alias pager less
+
+    $ aka alias pager git
+
     $ aka pager --version
-    less 551 (GNU regular expressions)
-    Copyright (C) 1984-2019  Mark Nudelman
-    
-    less comes with NO WARRANTY, to the extent permitted by law.
-    For information about the terms of redistribution,
-    see the file named README in the less distribution.
-    Home page: http://www.greenwoodsoftware.com/less
+    git version 2.28.0
 
 ## Notes
 
-Initial prototype uses aliases, which won't work for programs that depending on
-establishing their behavior based on the `argv[0]` name they were called by.
+Initial prototype uses aliases, which may not work for programs that depend on
+establishing their behavior based on the `argv[0]` name they were called by
+(busybox, for example).
+
+We use an .aka file in the current directory for storing the aliases.
+
+## Ideas
+
+[ ] AKA_HOME environment variable to look for .aka (so we don't always look for
+    .aka in either PWD or HOME)
+
+[ ] `aka unalias` command
