@@ -1,24 +1,70 @@
 # Also Known As
 
-Simple, shell-based command aliasing
+Simple, persistent, shell-based command aliasing
 
 Usage: aka alias               show stored aliases
        aka alias NAME CMD...   store an alias for CMD
        aka NAME [...]          run CMD, optionally with more arguments
 
+By default, aliases are stored in the `.aka` file of the current working
+directory. Optionally, the location of that file can be modified by setting the
+AKA_FILE enviornment variable.
+
+
 Examples:
 
-    $ aka alias pager more
+    $ aka alias demo more
 
-    $ aka pager --version
+    $ aka demo --version
     more from util-linux 2.36
 
-    $ aka alias pager git
+    $ aka alias demo git
 
-    $ aka pager --version
+    $ aka demo --version
     git version 2.28.0
 
-Everything that is not aliased will get executed as usual.
+The command you alias can have parameters
+
+    $ aka alias l ls -f
+
+    $ aka l
+    .aka .. aka aka_tiny . README .git
+
+And you can pass additional parameters
+
+    $ aka l -tR
+    .. aka_tiny aka .git .aka README .
+
+You can see all of the currently stored aliases
+
+    $ aka alias
+    l='ls -f'
+    demo='git'
+
+And edit them using your favorite text editor
+
+    $ cat .aka
+    alias demo='git'
+    alias l='ls -f'
+
+Everything that is not aliased will get executed as a regular command.
+
+    $ aka python3 --version
+    Python 3.8.6
+
+
+## How it works
+
+aka gets executed via /bin/sh, sources $AKA_FILE and evals the command, thus
+applying aliases and whatever other parameters were stored in $AKA_FILE.
+
+This means that you can, for example put something like
+
+    alias my='AKA_FILE=~/.my_aliases aka'
+
+in your shell's startup files, and thereafter use the `my` command as an `aka`
+invocation that always sources ~/.my_aliases file in your home directory,
+regardless of where you run it.
 
 ## Notes
 
@@ -26,11 +72,10 @@ Initial prototype uses aliases, which may not work for programs that depend on
 establishing their behavior based on the `argv[0]` name they were called by
 (busybox, for example).
 
-We use an .aka file in the current directory for storing the aliases.
 
 ## Ideas
 
-[ ] AKA_HOME environment variable set to the directory containing the desired
+[ ] AKA_FILE environment variable set to the directory containing the desired
     .aka file, otherwise we look for that file in the current directory.
 
-[ ] `aka unalias` command
+[ ] `aka unalias` command?

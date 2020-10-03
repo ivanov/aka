@@ -1,1 +1,2 @@
-alias pager='more'
+alias demo='git'
+alias l='ls -f'
