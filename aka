@@ -28,9 +28,8 @@ if [ $# -ge 3 ]  && [ $1 = alias ] ; then
     # make 'more' the new $1
     shift 2
     # remove previous aliases for 'pager'
-    cat .aka | grep -v "alias $cmd=" > .aka
-    # get rid of previous aliases
-    echo "alias $cmd='$*'" >> .aka
+    [ -e .aka ] && grep -v "alias $cmd=" .aka  > .aka~
+    echo "alias $cmd='$*'" >> .aka~ && mv .aka~ .aka
     exit 0
 fi
 
