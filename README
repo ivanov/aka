@@ -1,0 +1,17 @@
+Also Known As
+A simply "launcher" of command-subcommand style where the the subcommands can be altered based on configuration
+
+    $ aka pager=more
+    $ aka pager --version
+    more from util-linux 2.36
+    $ aka pager=less
+    $ aka pager --version
+    less 551 (GNU regular expressions)
+    Copyright (C) 1984-2019  Mark Nudelman
+    
+    less comes with NO WARRANTY, to the extent permitted by law.
+    For information about the terms of redistribution,
+    see the file named README in the less distribution.
+    Home page: http://www.greenwoodsoftware.com/less
+
+
