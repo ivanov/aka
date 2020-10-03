@@ -1,7 +1,29 @@
 #!/bin/sh
+
+# is this a alias creation? that means we should have at least 3 arguments,
+# such as:
+#
+# $ aka alias pager more
+#    \     \     \    \
+#     $0    $1    $2   $3
+#
+#
+if [ $# -ge 3 ]  && [ $1 = alias ] ; then
+    # cmd='pager'
+    cmd=$2
+    # make 'more' the new $1
+    shift 2
+    # get rid of previous aliases for 'pager'
+    cat .aka | grep -v "alias $cmd=" > .aka
+    # get rid of previous aliases
+    echo "alias $cmd='$*'" >> .aka
+    exit 0
+fi
+
 if [ -e .aka ] ; then
     echo sourcing .aka;
     . ./.aka
 fi
 
-echo `type pager`
+# TODO - wrap this in if VERBOSE
+echo `type $1`

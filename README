@@ -3,10 +3,10 @@
 A simply "launcher" of command-subcommand style where the the subcommands can
 be altered based on configuration
 
-    $ aka pager=more
+    $ aka alias pager more
     $ aka pager --version
     more from util-linux 2.36
-    $ aka pager=less
+    $ aka alias pager less
     $ aka pager --version
     less 551 (GNU regular expressions)
     Copyright (C) 1984-2019  Mark Nudelman
