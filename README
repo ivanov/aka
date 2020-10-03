@@ -1,4 +1,6 @@
-# Also Known As
+  .---------------------.
+ / aka - also known as /
+/---------------------/
 
 Simple, persistent, shell-based command aliasing
 
@@ -9,7 +11,7 @@ Usage: aka alias               show stored aliases
 By default, aliases are stored in the `.aka` file of the current working
 directory. Optionally, the location of that file can be modified by setting the
 AKA_FILE enviornment variable. Tested on Debian, OpenBSD, and OpenWRT, aka uses
-portable shell syntax and should work everywhere that has typical /bin/sh
+portable shell syntax and should work everywhere that has a typical /bin/sh
 
 
 Examples:
@@ -53,6 +55,31 @@ Everything that is not aliased will get executed as a regular command.
     $ aka python3 --version
     Python 3.8.6
 
+## Why would anyone want this?
+
+A practical use case might be to have
+
+.
+├── c_proj
+│   └── .aka       | alias doit='make install'
+├── go_proj
+│   └── .aka       | alias doit='go run'
+└── python_proj
+    └── .aka       | alias doit='pip install .'
+
+Now you can `aka doit` to your hearts content inside each of those folders, and
+have that execute the appropriate build commands for the type of project it is.
+
+    $ for x in *; do (cd $x && aka doit); done
+    make: *** No rule to make target 'install'.  Stop.
+    go run: no go files listed
+    ERROR: Directory '.' is not installable. Neither 'setup.py' nor 'pyproject.toml' found.
+
+
+## Installation
+
+Grab aka, make it executable, and place it somewhere in your path.
+
 
 ## How it works
 
@@ -68,10 +95,6 @@ in your shell's startup files, and thereafter use the `my` command as an `aka`
 invocation that always sources ~/.my_aliases file in your home directory,
 regardless of where you run it.
 
-## Installation
-
-Grab aka, make it executable, and place it somewhere in your path.
-
 ## Notes
 
 Initial prototype uses aliases, which may not work for programs that depend on
@@ -86,3 +109,10 @@ establishing their behavior based on the `argv[0]` name they were called by
     current directory.
 
 [ ] `aka unalias` command?
+
+## Related Projects
+
+https://direnv.net/
+"direnv is an extension for your shell. It augments existing shells with a new
+feature that can load and unload environment variables depending on the current
+directory." The direnv website has links to a half dozen similar projects.
