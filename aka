@@ -1,5 +1,4 @@
 #!/bin/sh
-echo `pwd`
 if [ -e .aka ] ; then
     echo sourcing .aka;
     . ./.aka
