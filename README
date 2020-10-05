@@ -80,6 +80,14 @@ have that execute the appropriate build commands for the type of project it is.
 
 Grab aka, make it executable, and place it somewhere in your path.
 
+The standard version of aka (~40 lines) that prints usage and has comments
+explaining the code is here:
+
+    https://git.sr.ht/~pi/aka/blob/main/aka
+
+If you just want the business logic, functional equivalent (~10 lines) is here:
+
+    https://git.sr.ht/~pi/aka/blob/main/aka_tiny
 
 ## How it works
 
@@ -116,3 +124,9 @@ https://direnv.net/
 "direnv is an extension for your shell. It augments existing shells with a new
 feature that can load and unload environment variables depending on the current
 directory." The direnv website has links to a half dozen similar projects.
+
+## Author
+
+aka was written by Paul Ivanov
+https://pirsquared.org
+https://git.sr.ht/~pi/aka
