@@ -125,6 +125,10 @@ https://direnv.net/
 feature that can load and unload environment variables depending on the current
 directory." The direnv website has links to a half dozen similar projects.
 
+## License
+
+aka is distributed under a 3-clause BSD license.
+
 ## Author
 
 aka was written by Paul Ivanov
