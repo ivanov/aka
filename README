@@ -10,7 +10,7 @@ Usage: aka alias               show stored aliases
 
 By default, aliases are stored in the `.aka` file of the current working
 directory. Optionally, the location of that file can be modified by setting the
-AKA_FILE enviornment variable. Tested on Debian, OpenBSD, and OpenWRT, aka uses
+AKA_FILE environment variable. Tested on Debian, OpenBSD, and OpenWRT, aka uses
 portable shell syntax and should work everywhere that has a typical /bin/sh
 
 
@@ -75,6 +75,9 @@ have that execute the appropriate build commands for the type of project it is.
     go run: no go files listed
     ERROR: Directory '.' is not installable. Neither 'setup.py' nor 'pyproject.toml' found.
 
+If you're curious, you can read a bit more about aka's origin story here:
+
+    https://pirsquared.org/blog/aka.html
 
 ## Installation
 
