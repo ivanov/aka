@@ -128,6 +128,12 @@ https://direnv.net/
 feature that can load and unload environment variables depending on the current
 directory." The direnv website has links to a half dozen similar projects.
 
+https://manpages.debian.org/stretch/dpkg/update-alternatives.1.en.html
+Debian's alternatives system is similar: it lets you switch out raw `XX`
+command for *all* users, which is why you have to run update-alternatives as
+root. With aka, you're defining the `aka XX` commands and they only apply on a
+per-folder basis (or per AKA_FILE environment variable, if set).
+
 ## License
 
 aka is distributed under a 3-clause BSD license.
