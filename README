@@ -149,6 +149,16 @@ command for *all* users, which is why you have to run update-alternatives as
 root. With aka, you're defining the `aka XX` commands and they only apply on a
 per-folder basis (or per AKA_FILE environment variable, if set).
 
+## Changelog
+
+2020-10-02: initial version
+
+2020-10-03: added `AKA_FILE` environment variable
+
+2020-10-08: publicly announced
+
+2020-10-28: added notes about multiple commands, redirection, and quotes
+
 ## License
 
 aka is distributed under a 3-clause BSD license.
