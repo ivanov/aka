@@ -112,6 +112,21 @@ Initial prototype uses aliases, which may not work for programs that depend on
 establishing their behavior based on the `argv[0]` name they were called by
 (busybox, for example).
 
+If you want to create aliases that include quotes, multiple commands, output
+redirection, or job control, you either have to escape the special characters
+like `>` and `&` with backslashes when creating the alias, or edit `.aka` file
+to add them directly in there:
+
+    $ aka alias redir_example echo \"hi\" \> log.txt
+    $ aka alias double_date date \;  date
+
+In the example above, if we don't put a backslash in front of the semicolon, we
+will be terminating our aka alias for double_date with just one call do date,
+and calling the second date command immediately.
+
+And finally, aka stores the aliases using single quotes, so if you have
+commands where you need to preserve single quotes, you should edit the `.aka`
+file by hand to change the alias definition to use double quotes.
 
 ## Ideas
 

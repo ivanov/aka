@@ -1,2 +1,4 @@
 alias demo='git'
 alias l='ls -f'
+alias redir_example='echo "hi" > log.txt'
+alias double_date='date ; date'
